@@ -28,10 +28,12 @@ document.getElementById('calculate-button').addEventListener('click', function (
     const previousExpenseText = expensesInnerText.innerText;
     const previousExpenseAmount = parseFloat(previousExpenseText);
 
+
     //update total expenses
-    debugger;
     const totalExpenses = foodExpenses + rentExpenses + clothsExpenses + previousExpenseAmount;
     expensesInnerText.innerText = totalExpenses;
+
+
 
     //get previous balance from inner text
     const balanceInnerText = document.getElementById('total-balance');
@@ -39,9 +41,10 @@ document.getElementById('calculate-button').addEventListener('click', function (
     const previousBalanceAmount = parseFloat(previousBalanceText);
 
     //update total balance
-    if (incomeAmount > totalExpenses && incomeAmount > 0 && foodExpenses > 0 && rentExpenses > 0 && clothsExpenses > 0) {
+    if (incomeAmount > totalExpenses && incomeAmount >= 0 && foodExpenses >= 0 && rentExpenses >= 0 && clothsExpenses >= 0) {
         const newBalance = incomeAmount - totalExpenses;
         const totalBalance = previousBalanceAmount + newBalance;
+        // console.log(totalBalance);
         balanceInnerText.innerText = totalBalance;
     }
     else {
